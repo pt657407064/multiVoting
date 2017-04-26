@@ -104,12 +104,13 @@ public class UI extends JFrame implements ActionListener{
     
     public static void updateResultPanel(String question, String... answers)
     {
+        choices = new JLabel[answers.length];
         //ans = answers;
         for(int i = 0;i < answers.length;i++)
         {
             voteNum.add(0);
             voteText.add(answers[i]);
-            choices[0] = new JLabel(answers[i]);
+            choices[i] = new JLabel(answers[i]);
             
         }
         //int count = answers.length;
@@ -136,21 +137,19 @@ public class UI extends JFrame implements ActionListener{
         //this.revalidate();
         //this.repaint();
     }
-    
-    public JPanel resetPanel()
+    //Last
+    public void resetPanel()
     {
-        JPanel empty = new JPanel ();
-        empty.add(new JLabel("Your voting has been closed"));
-        return empty;
+        resultPanel.removeAll();
+        resultPanel.add(new JLabel("Your voting has been closed"));
+        resultPanel.revalidate();
+        resultPanel.repaint();
     }
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource()== closeVoting)
         {
-            this.remove(resultPanel); //remove result panel
-            this.add(resetPanel(),BorderLayout.NORTH); //add reset panel
-            this.revalidate();    //revalidate automatically not manually      
-            this.repaint(); // repaint
+            resetPanel();
             
            // updateResultPanel("test");
         }

@@ -241,8 +241,9 @@ public class AddVoteUI extends JFrame implements ActionListener{
             choiceText[i] = labels.get(i).getText();
         }
         if(choiceText.length != 0){
-        UI.updateResultPanel(question.getText(), choiceText);
-        this.dispose();}
+            UI.updateResultPanel(question.getText(), choiceText);
+            this.dispose();
+        }
         else{
             JOptionPane.showMessageDialog(null, "Choice cant be empty");
         }
